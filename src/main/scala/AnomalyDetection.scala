@@ -21,11 +21,11 @@ import java.io._
 object AnomalyDetection {
   def main(args: Array[String]) {
 
-    val sparkConf = new SparkConf().setAppName("AnomalyDetection").setMaster("local")
+    val sparkConf = new SparkConf().setAppName("AnomalyDetection").setMaster("spark://se018:7077")
     val sc = new SparkContext(sparkConf)
     val normalizedData = loadData(sc)
     val model = trainModel(normalizedData)
-    val file = new File("/Users/lanjianchao/Movies/trainOutput.txt")
+    val file = new File("/home/cs/jclan/trainOutput.txt")
     val bw = new BufferedWriter(new FileWriter(file))
     val centroid = model.clusterCenters(0).toString // save centroid to file
     bw.write(centroid)

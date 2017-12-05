@@ -9,9 +9,9 @@ object CheckValue2 {
   def main(args: Array[String]) {
 
     //创建入口对象
-    val conf = new SparkConf().setAppName("CheckValue2").setMaster("local")
+    val conf = new SparkConf().setAppName("CheckValue2").setMaster("spark://se018:7077")
     val sc = new SparkContext(conf)
-    val rawData = sc.textFile("/Users/lanjianchao/Movies/kddcup.data_10_percent.csv")
+    val rawData = sc.textFile("/home/cs/jclan/kddcup.data_10_percent.csv")
     var clusterIndex: Int = 0
 
     val LabelsAndData = rawData.map {

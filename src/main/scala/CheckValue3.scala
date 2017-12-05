@@ -8,9 +8,9 @@ import org.apache.spark.{SparkConf, SparkContext}
 object CheckValue3 {
   def main(args: Array[String]) {
     //创建入口对象
-    val conf = new SparkConf().setAppName("CheckValue3").setMaster("local")
+    val conf = new SparkConf().setAppName("CheckValue3").setMaster("spark://se018:7077")
     val sc = new SparkContext(conf)
-    val rawData = sc.textFile("/Users/lanjianchao/Movies/kddcup.data_10_percent.csv")
+    val rawData = sc.textFile("/home/cs/jclan/kddcup.data_10_percent.csv")
 
     val LabelsAndData = rawData.map {
       //代码块执行RDD[String] => RDD[Vector]
